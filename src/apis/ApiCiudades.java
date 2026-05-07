@@ -51,7 +51,7 @@ public class ApiCiudades {
 
   private JSONObject leerJsonDeUrl(String urlApi) throws IOException, JSONException{
     URL url = new URL(urlApi);
-    try (Scanner scanner = new Scanner(url.openStream(), "URF-8").useDelimiter("\\a")){
+    try (Scanner scanner = new Scanner(url.openStream(), "UTF-8").useDelimiter("\\a")){
       String jsonString = scanner.hasNext()? scanner.next() : "";
       return new JSONObject(jsonString);
     }
