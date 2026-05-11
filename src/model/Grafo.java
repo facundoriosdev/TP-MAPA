@@ -14,6 +14,19 @@ public class Grafo {
 		this.todasLasConexiones= new ArrayList<>();
 		this.adyacencias= new HashMap<>();
 		}
+	public void generarConexionesCompletas() {
+	    this.todasLasConexiones.clear();
+	    for (List<Conexion> lista : adyacencias.values()) {
+	        lista.clear();
+	    }
+
+	    for (int i = 0; i < ubicaciones.size(); i++) {
+	        for (int j = i + 1; j < ubicaciones.size(); j++) {
+	            Conexion nueva = new Conexion(ubicaciones.get(i), ubicaciones.get(j));
+	            this.agregarConexion(nueva);
+	        }
+	    }
+	}
 
 	
 
@@ -32,8 +45,12 @@ public class Grafo {
 
 	public void agregarConexion(Conexion conexionMasBarata) {
 		todasLasConexiones.add(conexionMasBarata);
-		adyacencias.get(conexionMasBarata.getUbicacionA()).add(conexionMasBarata);
-		adyacencias.get(conexionMasBarata.getUbicacionB()).add(conexionMasBarata);
+		if (adyacencias.containsKey(conexionMasBarata.getUbicacionA())) {
+	        adyacencias.get(conexionMasBarata.getUbicacionA()).add(conexionMasBarata);
+	    }
+	    if (adyacencias.containsKey(conexionMasBarata.getUbicacionB())) {
+	        adyacencias.get(conexionMasBarata.getUbicacionB()).add(conexionMasBarata);
+	    }
 	}
 	public List<Ubicacion> getUbicaciones() {
 		return this.ubicaciones;

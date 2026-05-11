@@ -3,8 +3,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import model.Ciudad;
-import model.ConectarCiudades;
+
+import model.Ubicacion;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -13,9 +14,8 @@ public class ApiCiudades {
   private final String apiCiudades = Config.getApiCiudades();
   private JSONArray municipios;
 
-  public List<Ciudad> getCiudades() throws IOException, JSONException{
-    List<Ciudad> ciudades = new ArrayList<>();
-    ConectarCiudades coneccion = new ConectarCiudades();
+  public List<Ubicacion> getUbicacion() throws IOException, JSONException{
+    List<Ubicacion> localidades = new ArrayList<>();
     JSONArray municipios = getMunicipios();
     for(int i = 0; i < municipios.length(); i++){
       JSONObject municipio = municipios.getJSONObject(i);
@@ -23,11 +23,11 @@ public class ApiCiudades {
       String provincia = municipio.getJSONObject("provincia").getString("nombre");
       double latitud = municipio.getJSONObject("centroide").getDouble("lat");
       double longitud = municipio.getJSONObject("centroide").getDouble("lon");
-      Ciudad ciudad = coneccion.crearCiudadFromApi(nombre, provincia, latitud, longitud);
-      ciudades.add(ciudad);
+      Ubicacion nuevaUbicacion= new Ubicacion(provincia, nombre, latitud,longitud);
+      localidades.add(nuevaUbicacion);
     }
-    ciudades.sort(Comparator.comparing(c -> c.getNombre().toUpperCase()));
-    return ciudades;
+    localidades.sort(Comparator.comparing(u -> u.getlocalidad().toUpperCase()));
+    return localidades;
   }
 
   public List<String> getProvincias() throws IOException, JSONException{

@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class Ubicacion {
 	private String provincia;
 	private String localidad;
@@ -16,8 +18,8 @@ public class Ubicacion {
 		
 		return this.provincia;
 	}
-	public String localidad() {
-		return this.localidad;
+	public String getlocalidad() {
+		return localidad;
 	}
 
 	public double getLongitud() {
@@ -28,6 +30,19 @@ public class Ubicacion {
 	public double getLatitud() {
 		
 		return this.latitud;
+	}
+	@Override
+	public boolean equals(Object o) {
+	    if (this == o) return true;
+	    if (o == null || getClass() != o.getClass()) return false;
+	    Ubicacion that = (Ubicacion) o;
+	    // Comparamos por nombre y provincia para asegurar identidad
+	    return localidad.equals(that.localidad) && provincia.equals(that.provincia);
+	}
+
+	@Override
+	public int hashCode() {
+	    return Objects.hash(localidad, provincia);
 	}
 
 }

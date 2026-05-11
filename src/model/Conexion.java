@@ -56,7 +56,7 @@ public class Conexion {
 
 
 	public Ubicacion getDestino(Ubicacion ubicacionActual) {
-		if(this.ubicacionA.equals(ubicacionActual)) {
+		if(!this.ubicacionA.equals(ubicacionActual)) {
 			return this.ubicacionA;
 		}
 		return this.ubicacionB;

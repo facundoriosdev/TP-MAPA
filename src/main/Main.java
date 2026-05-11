@@ -1,6 +1,6 @@
 package main;
 
-import view.Navegador;
+import view.navegador.*;
 
 public class Main {
 
