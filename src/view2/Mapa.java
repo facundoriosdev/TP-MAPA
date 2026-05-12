@@ -6,10 +6,6 @@ import org.openstreetmap.gui.jmapviewer.MapPolygonImpl;
 import org.openstreetmap.gui.jmapviewer.Coordinate;
 import javax.swing.*;
 import java.awt.BorderLayout;
-import java.util.ArrayList;
-import java.util.List;
-import model.Ubicacion;
-import model.Conexion;
 import view.presenter.MapaPresenter;
 
 public class Mapa	 {
