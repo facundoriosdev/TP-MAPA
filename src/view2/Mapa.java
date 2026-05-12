@@ -31,6 +31,9 @@ public class Mapa	 {
 
         mapa = new JMapViewer();
         frame.getContentPane().add(mapa, BorderLayout.CENTER);
+        
+        Coordinate coordenada = new Coordinate(-34.521, -58.719);
+        mapa.setDisplayPosition(coordenada, 5);
 
         JPanel panelInfo = new JPanel();
         lblCostos = new JLabel("Calculando costos...");

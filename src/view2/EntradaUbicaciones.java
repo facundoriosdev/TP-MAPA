@@ -8,6 +8,8 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -15,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import view.presenter.UbicacionPresenter;
 
 import javax.swing.JComboBox;
+import java.awt.Color;
 
 public class EntradaUbicaciones {
 
@@ -37,11 +40,16 @@ public class EntradaUbicaciones {
         frame.setBounds(100, 100, 700, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
+        
+        Icon backgroundIcon = new ImageIcon(getClass().getResource("/imagenes/fondo.jpg"));
+		JLabel backgroundLabel = new JLabel(backgroundIcon);
+		backgroundLabel.setBounds(0, 0, 700, 500);
 
        //lista de ciudades
-        JLabel lblSeleccion = new JLabel("SELECCIONE UNA CIUDAD");
+        JLabel lblSeleccion = new JLabel("      SELECCIONE UNA CIUDAD");
+        lblSeleccion.setForeground(new Color(255, 255, 255));
         lblSeleccion.setFont(new Font("Tahoma", Font.BOLD, 12));
-        lblSeleccion.setBounds(20, 30, 200, 20);
+        lblSeleccion.setBounds(20, 29, 200, 20);
         frame.getContentPane().add(lblSeleccion);
 
         comboCiudades = new JComboBox<>();
@@ -58,7 +66,9 @@ public class EntradaUbicaciones {
         });
         // tabla
         JLabel lblTabla = new JLabel("Ciudades seleccionadas");
-        lblTabla.setBounds(300, 20, 200, 20);
+        lblTabla.setForeground(new Color(255, 255, 255));
+        lblTabla.setFont(new Font("Tahoma", Font.BOLD, 11));
+        lblTabla.setBounds(300, 19, 200, 20);
         frame.getContentPane().add(lblTabla);
 
         tableModel = new DefaultTableModel(new Object[]{"Ciudad", "Provincia"}, 0);
@@ -80,6 +90,8 @@ public class EntradaUbicaciones {
         btnGenerar.addActionListener(e -> {
             if (presenter != null) presenter.generarConexionPulsado();
         });
+        
+        frame.getContentPane().add(backgroundLabel);
         }
         //metodos utiles para el presenter
         
