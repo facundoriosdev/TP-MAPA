@@ -36,7 +36,6 @@ public class Ubicacion {
 	    if (this == o) return true;
 	    if (o == null || getClass() != o.getClass()) return false;
 	    Ubicacion that = (Ubicacion) o;
-	    // Comparamos por nombre y provincia para asegurar identidad
 	    return localidad.equals(that.localidad) && provincia.equals(that.provincia);
 	}
 
