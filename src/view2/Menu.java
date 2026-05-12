@@ -33,25 +33,26 @@ public class Menu {
 
 	private void initialize() {
 		frame = new JFrame();
+		frame.setTitle("TP2 - Programación III");
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblTitulo = new JLabel("Complete los datos");
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblTitulo.setBounds(143, 21, 135, 27);
+		lblTitulo.setBounds(143, 21, 200, 27);
 		frame.getContentPane().add(lblTitulo);
 		
 		JLabel lblCosto = new JLabel("Costo por KM");
-		lblCosto.setBounds(10, 73, 137, 14);
+		lblCosto.setBounds(10, 73, 200, 14);
 		frame.getContentPane().add(lblCosto);
 		
 		JLabel lblAumento = new JLabel("Porcentaje de aumento");
-		lblAumento.setBounds(10, 125, 137, 14);
+		lblAumento.setBounds(10, 125, 200, 14);
 		frame.getContentPane().add(lblAumento);
 		
 		JLabel lblFijo = new JLabel("Costo fijo interprovincial");
-		lblFijo.setBounds(10, 170, 137, 38);
+		lblFijo.setBounds(10, 170, 200, 38);
 		frame.getContentPane().add(lblFijo);
 		
 		JButton btnIniciar = new JButton("Iniciar");
@@ -68,15 +69,15 @@ public class Menu {
 		frame.getContentPane().add(txtCostoKm);
 		txtCostoKm.setColumns(10);
 		
-		txtCostoInterprovincial = new JTextField();
-		txtCostoInterprovincial.setBounds(192, 122, 86, 20);
-		frame.getContentPane().add(txtCostoInterprovincial);
-		txtCostoInterprovincial.setColumns(10);
-		
 		txtPorcentajeAumento = new JTextField();
-		txtPorcentajeAumento.setBounds(192, 179, 86, 20);
+		txtPorcentajeAumento.setBounds(192, 122, 86, 20);
 		frame.getContentPane().add(txtPorcentajeAumento);
 		txtPorcentajeAumento.setColumns(10);
+		
+		txtCostoInterprovincial = new JTextField();
+		txtCostoInterprovincial.setBounds(192, 179, 86, 20);
+		frame.getContentPane().add(txtCostoInterprovincial);
+		txtCostoInterprovincial.setColumns(10);
 		
 		JLabel lblNewLabel_4 = new JLabel("(Pasando los 300KM)");
 		lblNewLabel_4.setBounds(10, 145, 123, 14);

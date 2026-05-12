@@ -39,6 +39,11 @@ public class MenuPresenter {
                 view.mostrarMensaje("El porcentaje de aumento debe estar entre 0 y 100.");
                 return;
             }
+            
+            if (costoInter <= 0) {
+                view.mostrarMensaje("El costo fijo interprovincial debe ser mayor a cero.");
+                return;
+            }
 
             navigator.lanzarConexion(costoKm, aumento, costoInter);
             
