@@ -79,7 +79,7 @@ List<Ubicacion> seleccionadas = grafo.getUbicaciones();
             return;
         }
         grafo.generarConexionesCompletas();
-        System.out.println("Cables creados antes de Prim: " + grafo.getConexiones().size());
+        //System.out.println("Cables creados antes de Prim: " + grafo.getConexiones().size());
         navigator.lanzarMapa(grafo, costoKm, aumento, costoInter);
 		
 	}

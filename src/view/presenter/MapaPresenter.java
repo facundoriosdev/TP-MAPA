@@ -43,7 +43,5 @@ public class MapaPresenter {
         }
         view.actualizarInfoCostos("Costo Total de la Red: $" + String.format("%.2f", costoTotal));
         
-        System.out.println("Nodos en el árbol final: " + grafoFinal.getUbicaciones().size());
-        System.out.println("Aristas en el árbol final: " + grafoFinal.getConexiones().size());
     }
 }
