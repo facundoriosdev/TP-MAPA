@@ -12,6 +12,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import view.presenter.UbicacionPresenter;
@@ -64,6 +65,70 @@ public class EntradaUbicaciones {
         btnAgregar.addActionListener(e -> {
             if (presenter != null) presenter.agregarCiudadPulsado(comboCiudades.getSelectedIndex());
         });
+        
+     // Nuevos componentes para ingreso manual
+        JTextField txtCiudad;
+        JTextField txtProvincia;
+        JTextField txtLatitud;
+        JTextField txtLongitud;
+                
+        JLabel lblManual = new JLabel("AGREGAR MANUALMENTE");
+        lblManual.setForeground(Color.WHITE);
+        lblManual.setFont(new Font("Tahoma", Font.BOLD, 12));
+        lblManual.setBounds(20, 150, 200, 20);
+        frame.getContentPane().add(lblManual);
+
+        // Campo Nombre
+        JLabel lblCiudad = new JLabel("Ciudad:");
+        lblCiudad.setForeground(Color.WHITE);
+        lblCiudad.setBounds(20, 180, 80, 20);
+        frame.getContentPane().add(lblCiudad);
+        txtCiudad = new JTextField();
+        txtCiudad.setBounds(90, 180, 150, 20);
+        frame.getContentPane().add(txtCiudad);
+
+        // Campo Provincia
+        JLabel lblProvincia = new JLabel("Provincia:");
+        lblProvincia.setForeground(Color.WHITE);
+        lblProvincia.setBounds(20, 210, 80, 20);
+        frame.getContentPane().add(lblProvincia);
+        txtProvincia = new JTextField();
+        txtProvincia.setBounds(90, 210, 150, 20);
+        frame.getContentPane().add(txtProvincia);
+
+        // Campo Latitud
+        JLabel lblLatitud = new JLabel("Latitud   -54 < x < -22:");
+        lblLatitud.setForeground(Color.WHITE);
+        lblLatitud.setBounds(20, 240, 160, 20);
+        frame.getContentPane().add(lblLatitud);
+        txtLatitud = new JTextField();
+        txtLatitud.setBounds(180, 240, 80, 20);
+        frame.getContentPane().add(txtLatitud);
+
+        // Campo Longitud
+        JLabel lblLongitud = new JLabel("Longitud  -70 < x < -53:");
+        lblLongitud.setForeground(Color.WHITE);
+        lblLongitud.setBounds(20, 270, 160, 20);
+        frame.getContentPane().add(lblLongitud);
+        txtLongitud = new JTextField();
+        txtLongitud.setBounds(180, 270, 80, 20);
+        frame.getContentPane().add(txtLongitud);
+
+        // Botón Agregar Manual
+        JButton btnAgregarManual = new JButton("Agregar Manual");
+        btnAgregarManual.setBounds(60, 310, 140, 30);
+        frame.getContentPane().add(btnAgregarManual);
+
+        // Acción del botón
+        btnAgregarManual.addActionListener(e -> {
+            if (presenter != null) presenter.agregarCiudadManualPulsado(
+                    txtCiudad.getText(),
+                    txtProvincia.getText(),
+                    txtLatitud.getText(),
+                    txtLongitud.getText()
+                );
+        });
+                
         // tabla
         JLabel lblTabla = new JLabel("Ciudades seleccionadas");
         lblTabla.setForeground(new Color(255, 255, 255));

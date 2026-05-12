@@ -68,6 +68,49 @@ public class UbicacionPresenter {
    
         view.agregarFilaTabla(seleccionada.getlocalidad(), seleccionada.getProvincia());
     }
+	
+	public void agregarCiudadManualPulsado(String ciudad, String provincia, String latStr, String lonStr) {
+	    // 1. Validar que los campos no estén vacíos
+	    if (ciudad.isEmpty() || provincia.isEmpty() || latStr.isEmpty() || lonStr.isEmpty()) {
+	        view.mostrarError("Todos los campos manuales son obligatorios.");
+	        return;
+	    }
+
+	    double latitud;
+	    double longitud;
+
+	    // 2. Validar que latitud y longitud sean números válidos
+	    try {
+	        latitud = Double.parseDouble(latStr);
+	        longitud = Double.parseDouble(lonStr);
+	    } catch (NumberFormatException e) {
+	        view.mostrarError("La latitud y longitud deben ser valores numéricos .");
+	        return;
+	    }
+	    
+	    if (latitud <= -54 || latitud >= -22) {
+	        view.mostrarError("La latitud ingresada (" + latitud + ") está fuera del rango permitido (-54 < x < -22).");
+	        return;
+	    }
+
+	    if (longitud <= -70 || longitud >= -53) {
+	        view.mostrarError("La longitud ingresada (" + longitud + ") está fuera del rango permitido (-70 < x < -53).");
+	        return;
+	    }
+
+	    // 3. Crear el objeto Ubicacion
+	    Ubicacion nuevaUbicacion = new Ubicacion(provincia, ciudad, latitud, longitud);
+
+	    // 4. Validar que no exista ya en el grafo
+	    if (grafo.getUbicaciones().contains(nuevaUbicacion)) {
+	        view.mostrarError("La ciudad " + ciudad + " ya está en la lista.");
+	        return;
+	    }
+
+	    // 5. Agregar al grafo (Modelo) y a la tabla (Vista)
+	    grafo.agregarUbicacion(nuevaUbicacion);
+	    view.agregarFilaTabla(ciudad, provincia);
+	}
 		
 	
 

@@ -41,6 +41,7 @@ EntradaUbicaciones vista = new EntradaUbicaciones();
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
     }
+    
     public void lanzarMapa(Grafo grafoCompleto, double cKm, double aument, double cInter) {
         Mapa vista = new Mapa();
         MapaPresenter presenter = new MapaPresenter(vista, grafoCompleto, cKm, aument, cInter);
